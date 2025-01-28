@@ -11,21 +11,21 @@ class HelloController extends AbstractController
     #[Route("/welcome/{name}", name: "WelcomeRoute", methods: "get")]
     public function welcome(string $name)
     {
-        return $this->render('Hello/Welcome.html.twig', ['name' => $name]);
+        return $this->render('Hello/welcome.html.twig', ['name' => $name]);
         //return new Response("Welcome to the world of Symfony {$name}");  
     }
     
-    #[Route("/about")]
+    #[Route("/aboutus", name: 'about')]
     public function about()
     {
-        return new Response("This is about Symfony");
+        return $this->render("Hello/about.html.twig");
     }
 
-    #[Route("/multiply/{a<\d+>}/{b<\d+>}")]
+    #[Route("/multiplynumbers/{a<\d+>}/{b<\d+>}", name: "multiply")]
     public function multiply( $a, $b)
     {
         $result = $a * $b;
-        return new Response("The result is {$result}");
+        return $this->render("Hello/multiply.html.twig", ['result' => $result]);
     }
 
 }
