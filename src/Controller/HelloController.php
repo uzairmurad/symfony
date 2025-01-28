@@ -13,6 +13,11 @@ class HelloController
     {
         return new Response("Welcome to the world of Symfony {$name}");  
     }
+    #[Route('/uzair')]
+    public function uzair(){
+       $data =  print    "This is Uzair Murad";
+        return new Response('Response');
+    }
 
     #[Route("/about")]
     public function about()
