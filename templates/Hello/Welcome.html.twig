@@ -1,1 +1,9 @@
-"Welcome to the world of Symfony Twig"
+{% extends "base.html.twig" %}
+
+{% block body %}
+<h2>"Welcome to the world of Symfony Twig Mr {{name | upper | reverse }}"</h2>
+{% for i in 0..10 %}
+     {{ i }}
+{% endfor %}
+
+{% endblock %}

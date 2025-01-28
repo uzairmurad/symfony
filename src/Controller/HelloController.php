@@ -2,23 +2,19 @@
 
 namespace App\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Routing\Attribute\Route as AttributeRoute;
 
-class HelloController
+class HelloController extends AbstractController
 {
     #[Route("/welcome/{name}", name: "WelcomeRoute", methods: "get")]
     public function welcome(string $name)
     {
-        return new Response("Welcome to the world of Symfony {$name}");  
+        return $this->render('Hello/Welcome.html.twig', ['name' => $name]);
+        //return new Response("Welcome to the world of Symfony {$name}");  
     }
-    #[Route('/uzair')]
-    public function uzair(){
-       $data =  print    "This is Uzair Murad";
-        return new Response('Response');
-    }
-
+    
     #[Route("/about")]
     public function about()
     {
