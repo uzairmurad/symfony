@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -16,8 +17,9 @@ class HelloController extends AbstractController
     }
     
     #[Route("/aboutus", name: 'about')]
-    public function about()
+    public function about(LoggerInterface $logger)
     {
+        $logger->info("We have accessed the about us page.");
         return $this->render("Hello/about.html.twig");
     }
 
