@@ -2,10 +2,12 @@
 
 namespace App\Controller;
 
+use App\Repository\StudentRepository;
 use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route as AttributeRoute;
 
 class HelloController extends AbstractController
 {
@@ -28,6 +30,15 @@ class HelloController extends AbstractController
     {
         $result = $a * $b;
         return $this->render("Hello/multiply.html.twig", ['result' => $result]);
+    }
+
+    #[Route("/getstudents")]
+    public function getStudents(StudentRepository $studentRepository)
+    {
+        // $studentsRepo = new StudentRepository;
+        // $students = $studentsRepo->getStudents();
+        $students = $studentRepository->getStudents();
+        return $this->render('Hello/getstudents.html.twig', ['students' => $students]);
     }
 
 }
