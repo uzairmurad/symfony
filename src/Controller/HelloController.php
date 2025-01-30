@@ -19,9 +19,9 @@ class HelloController extends AbstractController
     }
     
     #[Route("/aboutus", name: 'about')]
-    public function about(LoggerInterface $logger)
+    public function about(StudentRepository $studentRepository)
     {
-        $logger->info("We have accessed the about us page.");
+        $studentRepository->getStudents();
         return $this->render("Hello/about.html.twig");
     }
 
